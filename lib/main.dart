@@ -6,17 +6,25 @@ void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
-  
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+
+  // all global varible and function decalration goes here
+  int count=0;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'using container widget',
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('flutter i sfun'),
+          title: const Text('flutter is fun!'),
           ),
 
         // ### tut 1: making box with center
@@ -66,14 +74,26 @@ class MyApp extends StatelessWidget {
         //   ],
         // ),
 
-        //tut 5: this is so satisfting to do uptill now
-        //tut 5: this crates three icon botton bar and cool side ways navbar panel!
-        //  floatingActionButton: FloatingActionButton(
-        //   onPressed: (){//SIMM to onclick event handler
-        //     print('pressed!');
-        //   },
-        //   child:const Icon(Icons.add),
-        //  ),
+        // tut 5: this is so satisfting to do uptill now
+        // tut 5: this crates three icon botton bar and cool side ways navbar panel!
+         floatingActionButton: FloatingActionButton(
+          onPressed: (){//SIMM to onclick event handler
+            setState(() {
+              count++;
+            });
+          },
+          child:const Icon(Icons.add),
+         ),
+
+         body: Center(
+          child: Text(
+            '$count',
+           style:const TextStyle(fontSize: 45),
+            ),
+          
+         ),
+         
+
 
         //  bottomNavigationBar: BottomNavigationBar(
         //   items:const [
