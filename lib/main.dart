@@ -1,161 +1,53 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MaterialApp(
+    title: 'Navigation Basics',
+    home: FirstRoute(),
+  ));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-
-  // all global varible and function decalration goes here
-  int count=0;
+class FirstRoute extends StatelessWidget {
+  const FirstRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'using container widget',
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('flutter is fun!'),
-          ),
-
-        // ### tut 1: making box with center
-        // body: Center(
-        //   child: Container(
-        //   width: 200,
-        //   height: 200,
-        //   color: Colors.amber,
-        //   child: const Text(
-        //     'hi mummy!kem cho',
-        //   ),
-        // )
-        // ),
-
-        //### tut 2: making Icon align in colum
-        // body: Column(
-        //   children: const[
-        //     Icon(Icons.backpack),
-        //     Icon(Icons.leaderboard),
-        //     Icon(Icons.person),
-        //   ],
-        // ),
-
-        //### tut 3: making Icon align in row as well as space between
-        // body: Row(
-        //   mainAxisAlignment: MainAxisAlignment.spaceBetween,//this line makes all icon align space between in y axis
-        //   crossAxisAlignment: CrossAxisAlignment.stretch,//this line makes all icon align space between in x axis
-        //   children: const[
-        //     Icon(Icons.backpack),
-        //     Icon(Icons.leaderboard),
-        //     Icon(Icons.person),
-        //   ],
-        // ),
-
-        //tut 4: learning use of positions
-        // body: Stack(
-        //   children: [
-        //     Container(
-        //       color: Colors.red,
-        //       height: 100,
-        //       width: 100,
-        //     ),
-        //     const Align(//align is simillar to obsolute postion, while postioned() is simillar to relative 
-        //       alignment: Alignment.center,
-        //       child: Icon(Icons.verified),
-        //     )
-        //   ],
-        // ),
-
-        // tut 5: this is so satisfting to do uptill now
-        // tut 5: this crates three icon botton bar and cool side ways navbar panel!
-         floatingActionButton: FloatingActionButton(
-          onPressed: (){//SIMM to onclick event handler
-            setState(() {
-              count++;
-            });
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('First Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('About us'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SecondRoute()),
+            );
           },
-          child:const Icon(Icons.add),
-         ),
+        ),
+      ),
+    );
+  }
+}
 
-         body: Center(
-          child: Text(
-            '$count',
-           style:const TextStyle(fontSize: 45),
-            ),
-          
-         ),
-         
+class SecondRoute extends StatelessWidget {
+  const SecondRoute({super.key});
 
-
-        //  bottomNavigationBar: BottomNavigationBar(
-        //   items:const [
-        //     BottomNavigationBarItem(
-        //       icon: (Icon(Icons.home)),
-        //       label: 'Home'
-        //     ),
-        //      BottomNavigationBarItem(
-        //       icon: (Icon(Icons.business)),
-        //       label: 'business'
-        //     ),
-        //      BottomNavigationBarItem(
-        //       icon: (Icon(Icons.school)),
-        //       label: 'school'
-        //     )
-        //   ]
-        //   ),
-
-        //   drawer:const Drawer(
-        //    backgroundColor: Colors.grey,
-        //     child:Text('sidebar OP!'),
-        //     ),
-
-        // body: ListView(
-        //   scrollDirection: Axis.vertical,
-        //   addAutomaticKeepAlives: false,
-        //   children: [
-        //   Container(
-        //   width: 500,
-        //   height: 500,
-        //   color: Colors.blue,
-        //   child: const Text(
-        //     'hi mummy!kem cho',
-        //   ),
-        // ),
-        //    Container(
-        //   width: 500,
-        //   height: 500,
-        //   color: Colors.amber,
-        //   child: const Text(
-        //     'hi mummy!kem cho',
-        //   ),
-        // ),
-        //    Container(
-        //   width: 500,
-        //   height: 500,
-        //   color: Colors.red,
-        //   child: const Text(
-        //     'hi mummy!kem cho',
-        //   ),
-        // ),
-        //  Container(
-        //   width: 500,
-        //   height: 500,
-        //   color: Colors.green,
-        //   child: const Text(
-        //     'hi mummy!kem cho',
-        //   ),
-        // )
-        //   ],
-        // ),
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
         
+          child:Container(
+            color: Colors.amber,
+            height: 100,
+            width: 500,
+            child: const Text('welcome to the world of fashion',style:TextStyle(fontSize: 33) ,),
+          )
         
       ),
     );
